@@ -33,3 +33,24 @@
         display: none;
     }
 }
+
+    table{
+        width: 80%;
+        background-color: rgba(200,0,0,8);
+        border: 2px solid rgb(0,100,0);       
+
+    }
+    td{
+        padding: 5px;
+        font-family: Arial;
+        font-size: 10pt;
+    }
+    th{
+        font-family: verdana;
+        font-size: 15pt;
+        color: white;
+    }
+    tr:hover{
+        background-color:darkblue;
+    
+}
