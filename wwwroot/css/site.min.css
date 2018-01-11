@@ -2,8 +2,8 @@ body{padding-top:50px;padding-bottom:20px}.body-content{padding-left:15px;paddin
 
 table{
     width: 80%;
-    background-color: rgba(250,0,0,8);
-    border: 2px solid rgb(0,100,0);       
+    background-color: rgba(255,0,0,0.4);
+    border: 2px solid rgb(212, 224, 231);       
 
 }
 td{

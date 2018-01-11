@@ -1,4 +1,5 @@
 @model IEnumerable<ProjetoCidades.Models.Cidade>
+     @*  aqui era para funcionamento do list que não vem do BD 
 <div>
     <h2>Minhas Cidades</h2>
     @{
@@ -7,4 +8,50 @@
             <li>@item.Nome</li>
         }
     }
+</div> *@ 
+
+<div>
+    <h2>Minhas Cidades</h2>
+    <P>
+        <a asp-action="Cadastrar">Cadastrar Nova Cidade</a>
+    </P>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Estado</th>
+                <th>Habitantes</th>
+                <th></th>          
+                
+            </tr>
+
+        </thead>
+        <tbody>
+            @{
+                foreach(var item in Model){
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.Nome
+                        </td>
+                        <td>
+                            @item.Estado
+                        </td>
+                        <td>
+                            @item.Habitantes
+                        </td>
+                        <td>
+                            <a asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+                            <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a>
+                            <a asp-action="Excluir" asp-route-id="@item.Id">Escluir</a>
+                        </td>
+                            
+                    </tr>
+                }
+            }            
+        </tbody>
+    </table>   
 </div>
