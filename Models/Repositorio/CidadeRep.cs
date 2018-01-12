@@ -33,7 +33,7 @@ namespace ProjetoCidades.Models.Repositorio
                 cidade.Id =Convert.ToInt16(sdr["Id"]);
                 cidade.Nome = sdr["Nome"].ToString();
                 cidade.Estado = sdr["Estado"].ToString();
-                cidade.Habitantes =Convert.ToInt16(sdr["Habitantes"]);
+                cidade.Habitantes =Convert.ToInt32(sdr["Habitantes"]);
 
                 lstCidades.Add(cidade);
             }
