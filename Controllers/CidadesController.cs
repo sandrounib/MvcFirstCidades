@@ -36,16 +36,31 @@ namespace ProjetoCidades.Controllers
             var Lista = cidade.ListarCidades();
             return View(Lista);
         }
+        //get esta pedindo os dados  (server para exibir na view)
+        //get tras os dados para você ver o que vai se atualizado -- isso será feito no update
         [HttpGet]
         public IActionResult Cadastrar(){
             
             return View();
         }
 
-        [HttpPost]
+        //post está mandando os dados para cadastrar 
+        [HttpPost]  /// no update depois de vc ver os dados você vai querer salvar então o post salva pra vc
         public IActionResult Cadastrar([Bind] Cidade cidade){
-            objCidadeRep.Cadastrar(cidade);
+            objCidadeRep.Cadastrar(cidade); //esse cadastrar e do model
+            return RedirectToAction("Index"); //(não vai pra view, vai para o iaction da index do controller)
+        }
+
+        [HttpGet]
+        public IActionResult Atualizar(int id){
+            var dados = objCidadeRep.Atualizar(cidade);
+            return View(dados);            
+    
+        }
+        [HttpPost]
+        public IActionResult Atualizar(Cidade cidade){
             return RedirectToAction("Index");
         }
+
     }
 }

@@ -51,10 +51,48 @@ namespace ProjetoCidades.Models.Repositorio
             SqlCommand cmd = new SqlCommand(Sqlquery,con);
             con.Open();
             cmd.ExecuteNonQuery();
-            con.Close();
-            
+            con.Close();            
         }
-    
 
+        public string Editar(Cidade cidade){
+            SqlConnection con = new SqlConnection(connectionString);
+            string msg;
+            try{              
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "Update Cidades set nome = @n, estado =@e, habitantes = @h where id=@id";
+                cmd.Parameters.AddWithValue("@n",cidade.Nome);
+                cmd.Parameters.AddWithValue("@e",cidade.Estado);
+                cmd.Parameters.AddWithValue("@h",cidade.Habitantes);
+                cmd.Parameters.AddWithValue("@",cidade.Id);
+
+                con.Open();
+                int r = cmd.ExecuteNonQuery();
+
+                if(r > 0)
+                    msg = "Atualização efeturada";
+                else
+                    msg = "Não foi possível atualizar";
+                    cmd.Parameters.Clear();                
+            }
+            catch (SqlException se)
+            {
+                
+                throw new Exception("Erro ao tentar atualizar dados" + se.Message);
+            }
+            catch(System.Exception e)
+            {
+                throw new Exception("Erro inesperado. "+e.Message);                
+
+            }
+            finally{
+
+                con.Close();
+            }
+            return msg;
+                 
+        }    
+        
     }
 }
